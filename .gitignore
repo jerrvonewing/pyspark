@@ -1,5 +1,6 @@
 # Files
 *.csv
+*.txt
 
 # Directories
 ml-100k
