@@ -13,9 +13,11 @@ def parseLine(line):
     temperature = float(fields[3]) * 0.1 * (9.0 / 5.0) + 32.0
     return (stationID, entryType, temperature)
 
+file_path = "file:////Users/jerrvon/Documents/pyspark-projects/data-files/1800.csv"
+
 # Read in the data file and parse each entry 
 # into three values, stationID, entryType and temperature
-lines = sc.textFile("file:////Users/jerrvon/Documents/pyspark-projects/1800.csv")
+lines = sc.textFile(file_path)
 parsedLines = lines.map(parseLine)
 
 # Filter the entries based x[1] value equating 

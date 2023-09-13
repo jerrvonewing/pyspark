@@ -15,9 +15,11 @@ def normalizeWords(text):
 conf = SparkConf().setMaster("local").setAppName("WordCount")
 sc = SparkContext(conf = conf)
 
+file_path = "file:////Users/jerrvon/Documents/pyspark-projects/data-files/Book.txt"
+
 # Read in the data file then FlatMap through the data file (a book)
 # to split each expected word into a list of words
-input = sc.textFile("file:////Users/jerrvon/Documents/pyspark-projects/Book.txt")
+input = sc.textFile(file_path)
 words = input.flatMap(normalizeWords)
 
 # Get a count of each word in the list

@@ -11,8 +11,10 @@ import collections
 conf = SparkConf().setMaster("local").setAppName("RatingsHistogram")
 sc = SparkContext(conf = conf)
 
+file_path = "file:////Users/jerrvon/Documents/pyspark-projects/data-files/ml-100k/u.data"
+
 # Define the file location and the mapping split for the dataset
-lines = sc.textFile("file:////Users/jerrvon/Documents/pyspark-projects/ml-100k/u.data")
+lines = sc.textFile(file_path)
 ratings = lines.map(lambda x: x.split()[2])
 result = ratings.countByValue()
 

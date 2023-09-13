@@ -12,9 +12,11 @@ def parseLine(line):
     numFriends = int(fields[3])
     return (age, numFriends)
 
+file_path = "file:////Users/jerrvon/Documents/pyspark-projects/data-files/fakefriends.csv"
+
 # Read in the texfile and pass the data along 
 # to be parsed by the parseLine function
-lines = sc.textFile("file:////Users/jerrvon/Documents/pyspark-projects/fakefriends.csv")
+lines = sc.textFile(file_path)
 rdd = lines.map(parseLine)
 
 # Convert the rdd into a tuple, then reduce by 

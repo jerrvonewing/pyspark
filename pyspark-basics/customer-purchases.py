@@ -25,8 +25,8 @@ def parseLine(line):
     return (customer_id, item_id, item_total)
 
 # Function to collect and print results of a given RDD
-def collectResults(convertedData):
-    results = convertedData.collect()
+def collectResults(rdd):
+    results = rdd.collect()
 
     for result in results:
         print(result)
@@ -37,9 +37,11 @@ master = "local"
 appName = "customerPurchaseTotals"
 sc = set_spark_config(master,appName)
 
+file_path = "file:////Users/jerrvon/Documents/pyspark-projects/data-files/customer-orders.csv"
+
 # Read in the file and parse each line and splitting them into 
 # the three corresponding split values
-lines = sc.textFile("file:////Users/jerrvon/Documents/pyspark-projects/customer-orders.csv")
+lines = sc.textFile(file_path)
 customerPurchaseLine = lines.map(parseLine)
 
 # Add customer/cost key value pair so that we can get the total 
