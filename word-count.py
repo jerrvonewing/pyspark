@@ -1,3 +1,7 @@
+# This script reads in a book as a text file and prints 
+# out the most commonly used used words and their respective
+# counts.
+
 import re
 from pyspark import SparkConf, SparkContext
 
@@ -30,4 +34,4 @@ for result in results:
     count = str(result[0])
     cleanWord = result[1].encode('ascii', 'ignore')
     if (cleanWord):
-        print(cleanWord.decode() + " " + count)
+        print(cleanWord.decode() + ":\t" + count)
