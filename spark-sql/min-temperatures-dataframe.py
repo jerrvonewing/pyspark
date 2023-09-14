@@ -3,6 +3,7 @@ from pyspark.sql import functions as func
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType
 
 spark = SparkSession.builder.appName("MinTemperatures").getOrCreate()
+spark.sparkContext.setLogLevel("WARN")
 
 file_path = "file:////Users/jerrvon/Documents/pyspark-projects/data-files/1800.csv"
 
