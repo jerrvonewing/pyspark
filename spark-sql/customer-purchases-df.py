@@ -23,6 +23,6 @@ customer_df = spark.read.schema(schema).csv(file_path)
 customerPurchases = customer_df.select("customerID", "itemCost")
 
 # Get the total spent per customer and then sorted
-customerPurchases.groupBy("customerID").agg(func.round(func.sum("itemCost"),2).alias("totalsByCustomer")).sort("totalsByCustomer").show()
-
+totalsByCustomer = customerPurchases.groupBy("customerID").agg(func.round(func.sum("itemCost"),2).alias("totalsByCustomer")).sort("totalsByCustomer")
+totalsByCustomer.show(totalsByCustomer.count())
 
